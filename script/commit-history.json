@@ -57,12 +57,12 @@
     "conclusion": "success"
   },
   {
-    "sha": "HEAD",
+    "sha": "6b8ef7478a66c74347349acdd076f8f5a2b44d74",
     "author": "nicoleUg",
     "commit": {
       "date": "2025-09-04T07:47:21.000Z",
       "message": "saludador con genero",
-      "url": "https://github.com/nicoleUg/TDDLabBaseProjectSaludador/commit/HEAD"
+      "url": "https://github.com/nicoleUg/TDDLabBaseProjectSaludador/commit/6b8ef7478a66c74347349acdd076f8f5a2b44d74"
     },
     "stats": {
       "total": 68,
@@ -72,6 +72,25 @@
     },
     "coverage": 95.65,
     "test_count": 7,
+    "failed_tests": 0,
+    "conclusion": "success"
+  },
+  {
+    "sha": "HEAD",
+    "author": "nicoleUg",
+    "commit": {
+      "date": "2025-09-04T08:03:04.000Z",
+      "message": "saludar por edad",
+      "url": "https://github.com/nicoleUg/TDDLabBaseProjectSaludador/commit/HEAD"
+    },
+    "stats": {
+      "total": 70,
+      "additions": 56,
+      "deletions": 14,
+      "date": "2025-09-04"
+    },
+    "coverage": 86.11,
+    "test_count": 11,
     "failed_tests": 0,
     "conclusion": "success"
   }
