@@ -6,6 +6,21 @@ const inputNombre = document.querySelector("#nombre");
 const selectGenero = document.querySelector("#genero");
 const inputEdad = document.querySelector("#edad");
 
+const btnEs = document.querySelector("#btn-es");
+const btnEn = document.querySelector("#btn-en");
+
+let idioma = "es"; 
+
+function activar(idiomaSeleccionado) {
+  idioma = idiomaSeleccionado;
+  
+  btnEs?.classList.toggle("active", idioma === "es");
+  btnEn?.classList.toggle("active", idioma === "en");
+}
+
+btnEs?.addEventListener("click", () => activar("es"));
+btnEn?.addEventListener("click", () => activar("en"));
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -16,7 +31,8 @@ form.addEventListener("submit", (e) => {
     genero: selectGenero?.value,
     edad: edadVal,
     hora: new Date().getHours(),
-    permitirHoraSinNombre: true, 
+    idioma,                      
+    permitirHoraSinNombre: true,   
   });
 
   div.textContent = saludo;
