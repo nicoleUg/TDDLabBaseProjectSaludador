@@ -4,23 +4,44 @@ function saludoSegunHora(hora) {
   return "Buenas noches";
 }
 
+function tratamientoPorGenero(genero) {
+  const g = (genero || "").toString().trim().toUpperCase();
+  if (g === "M") return "Señorito";
+  if (g === "F") return "Señorita";
+  return ""; // otros valores => sin tratamiento
+}
 
-export function saludar({ nombre, hora, permitirHoraSinNombre = false } = {}) {
+/**
+ * permitirHoraSinNombre (opcional):
+ *  - false (por defecto): sin nombre => "Hola" (para no romper tus tests).
+ *  - true (solo en la UI): sin nombre + hora => "Buenos días/tardes/noches".
+ */
+export function saludar({
+  nombre,
+  hora,
+  genero,
+  permitirHoraSinNombre = false,
+} = {}) {
   const nombreTrim = (nombre || "").trim();
 
-
+  // Sin nombre
   if (!nombreTrim) {
     if (permitirHoraSinNombre && typeof hora === "number") {
-      return saludoSegunHora(hora);         
+      return saludoSegunHora(hora);
     }
-    return "Hola";                           
+    return "Hola";
   }
 
-  
+  // Con nombre
+  const prefijo = tratamientoPorGenero(genero);
+  const nombreConTrat = prefijo ? `${prefijo} ${nombreTrim}` : nombreTrim;
+
+  // Sin hora => "Hola, [Sr./Sra.] Nombre"
   if (typeof hora !== "number") {
-    return `Hola, ${nombreTrim}`;
+    return `Hola, ${nombreConTrat}`;
   }
 
+  // Con hora => "Buenos X, [Sr./Sra.] Nombre"
   const base = saludoSegunHora(hora);
-  return `${base}, ${nombreTrim}`;
+  return `${base}, ${nombreConTrat}`;
 }
